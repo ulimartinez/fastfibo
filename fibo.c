@@ -11,21 +11,29 @@ int main(int argc, char **argv){
   }
   unsigned long long a = 0;
   unsigned long long b = 1;
-  unsigned long msb = 31 - __builtin_clz(n);
-  for(; msb >= 0; msb--){
+  long msb = 31 - __builtin_clz(n);
+  while(msb >=0){
     //loop stuff in here
+    //printf("msb: %lu\n", msb);
     unsigned long long c = b << 1;
     c -= a;
+    //printf("%llu times %llu is ", c, a);
     c = mt(c, a);
+    //printf("%llu\n", c);
+    //printf("%llu squared plus %llu squared is ", a, b);
     b = sq(a)+sq(b);
+    //printf("%llu\n", b);
     a = c;
+    //printf("a is %llu, b is %llu\n", a, b);
     if(n>>msb&1){
       c = a+b;
       a = b;
       b = c;
+      //printf("after adding once a is %llu, b is %llu\n", a, b);
     }
+    msb--;
   }
-  printf("%llu", a);
+  printf("%llu\n", a);
 }
 unsigned long long mt(unsigned long long a, unsigned long long b){
   unsigned long long res = 0;
@@ -41,11 +49,14 @@ unsigned long long mt(unsigned long long a, unsigned long long b){
 }
 unsigned long long sq(unsigned long long n){
   unsigned long long res = 0;
-  int msb = 31 - __builtin_clz(n);
-  for(long i = 0; i <= msb; i++){
-    res *= 4;
-    if(n>>i&1)
-      res+=4*i+1;
+  unsigned long long i = n;
+  unsigned long count = 0;
+  while(i > 0){
+    if(i&1){
+      res += n << count;
+    }
+    i = i >> 1;
+    count++;
   }
   return res;
 }
