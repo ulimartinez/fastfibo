@@ -3,6 +3,7 @@ Fast Fibonacci
 This is a C program that computes the n-th fibonacci number using the fast doubling algorithm. The algorithm is based on the following identity:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=F(2n)=F(n)*[2*F(n&plus;1)-F(n)]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F(2n)=F(n)*[2*F(n&plus;1)-F(n)]" title="F(2n)=F(n)*[2*F(n+1)-F(n)]" /></a>
+
 <a href="https://www.codecogs.com/eqnedit.php?latex=F(2n&plus;1)=F(n)^2&plus;F(n&plus;1)^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F(2n&plus;1)=F(n)^2&plus;F(n&plus;1)^2" title="F(2n+1)=F(n)^2+F(n+1)^2" /></a>
 
 
