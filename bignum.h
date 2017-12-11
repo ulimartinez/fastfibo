@@ -1,7 +1,7 @@
 #define MSB 9223372036854775808ULL
 struct bigInt_s{
-  unsigned long long number[10];
   unsigned int length;
+  unsigned long long number[];
 };
 typedef struct bigInt_s bigInt;
 bigInt addBigInts(bigInt a, bigInt b);

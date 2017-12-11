@@ -1,4 +1,5 @@
 #include "bignum.h"
+#include <stdlib.h>
 #include <stdio.h>
 bigInt addBigInts(bigInt a, bigInt b){
   unsigned int length = a.length > b.length? a.length: b.length;//the number with most digits

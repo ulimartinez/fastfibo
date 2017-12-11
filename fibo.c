@@ -11,20 +11,25 @@ F(2n+1) = F(n+1)^2 + F(n)^2
 int main(int argc, char **argv){
   char *last;
   long n = strtol(argv[1], &last, 10);
+  //get the number n
   if(*last){
     printf("Must specify just an integer");
     exit(EXIT_FAILURE);
   }
   bigInt a = {a.length = 0};
   bigInt b = {b.length = 0};
+  //initialize a and b nig numbers to 0
   long msb = 31 - __builtin_clz(n);
+  //the position of the most significant bit in n
   while(msb >=0){
+    //for each bit
     bigInt c = {c.length = b.length};
     memcpy(c.number, b.number, b.length * sizeof(long long));
+    //copy b into c
     biglshift(&c);//2b
     c = bigsub(c, a);//2b-a
     c = bigmt(c, a);//a*c
-    b = addBigInts(bigmt(a, a),bigmt(b, b));
+    b = addBigInts(bigmt(a, a),bigmt(b, b));//a^2 + b^2
     a = c;
     if(n>>msb&1){
       c = addBigInts(a,b);
